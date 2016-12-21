@@ -164,13 +164,13 @@
       Prefix="v"
       XmlFileName="$(VsixManifestFile)"
       XPath="/v:PackageManifest/v:CustomExtension/@Type"
-      Value="ModernUI.WPF.$(MuiVersion).nupkg" />
+      Value="ModernUI.WPF.Xrm.$(MuiVersion).nupkg" />
     <XmlUpdate
       Namespace="http://schemas.microsoft.com/developer/vsx-schema/2011"
       Prefix="v"
       XmlFileName="$(VsixManifestFile)"
       XPath="/v:PackageManifest/v:CustomExtension"
-      Value="Packages/ModernUI.WPF.$(MuiVersion).nupkg" />
+      Value="Packages/ModernUI.WPF.Xrm.$(MuiVersion).nupkg" />
 
     <!-- update NuGet version in ModernUI.App.vstemplate-->
     <XmlUpdate
@@ -195,15 +195,15 @@
     <Delete Files="@(OldNugetFiles)" />
     
     <!-- copy NuGet package to vsix template project -->
-    <Copy SourceFiles="$(OutputDir)\ModernUI.WPF.$(MuiVersion).nupkg" DestinationFolder="$(TemplatesDir)\ModernUI.Templates\Packages" />
+    <Copy SourceFiles="$(OutputDir)\ModernUI.WPF.Xrm.$(MuiVersion).nupkg" DestinationFolder="$(TemplatesDir)\ModernUI.Templates\Packages" />
     
     <!-- update vsix project to refer to new nuget package -->
     <XmlUpdate
       Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
       Prefix="ms"
       XmlFileName="$(TemplatesDir)\ModernUI.Templates\ModernUI.Templates.csproj"
-      XPath="/ms:Project/ms:ItemGroup/ms:Content[contains(@Include,'Packages\ModernUI.WPF.')]/@Include"
-      Value="Packages\ModernUI.WPF.$(MuiVersion).nupkg" />
+      XPath="/ms:Project/ms:ItemGroup/ms:Content[contains(@Include,'Packages\ModernUI.WPF.Xrm.')]/@Include"
+      Value="Packages\ModernUI.WPF.Xrm.$(MuiVersion).nupkg" />
 
 
     <!-- compile template solution -->
